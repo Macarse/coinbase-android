@@ -591,4 +591,10 @@ public class BuySellFragment extends Fragment implements CoinbaseFragment {
   public void onPINPromptSuccessfulReturn() {
     submit();
   }
+
+  public void startBuyAsSpendTask(String amount) {
+    startBuySellTask(BuySellType.BUY, amount, true);
+    mParent.refresh();
+    mParent.switchTo(MainActivity.FRAGMENT_INDEX_TRANSACTIONS);
+  }
 }

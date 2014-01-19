@@ -40,4 +40,6 @@ public class Constants {
   public static final String KEY_ACCOUNT_RECEIVE_ADDRESS = "account_%d_receive_address";
   public static final String KEY_ACCOUNT_ENABLE_MERCHANT_TOOLS = "account_%d_enable_merchant_tools";
 
+  public static final String KEY_ACCOUNT_BUY_AS_SPEND = "account_%d_buy_as_spend";
+
 }

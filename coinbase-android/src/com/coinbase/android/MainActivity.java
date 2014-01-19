@@ -1044,4 +1044,10 @@ public class MainActivity extends CoinbaseActivity implements AccountsFragment.P
       mPointOfSaleFragment.refresh();
     }
   }
+
+  public void startBuyAsSpendWith(String amount) {
+    switchTo(MainActivity.FRAGMENT_INDEX_BUYSELL);
+    getBuySellFragment().startBuyAsSpendTask(amount);
+  }
+
 }

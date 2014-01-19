@@ -146,9 +146,13 @@ public class AccountSettingsFragment extends ListFragment implements CoinbaseFra
 
         desc = getString(enabled ? (editOnly ? R.string.account_android_pin_edit : R.string.account_android_pin_all) : R.string.account_android_pin_none);
 
+      } else if("buy_as_spend".equals(item[2])) {
+        final boolean enabled = prefs.getString(String.format(Constants.KEY_ACCOUNT_BUY_AS_SPEND,
+            mActiveAccount), null) != null;
+        desc = getString(enabled ? R.string.account_android_buy_as_spend_enabled :
+            R.string.account_android_buy_as_spend_disabled);
       } else {
-        desc = prefs.getString(
-            String.format((String) item[1], mActiveAccount), null);
+        desc = prefs.getString(String.format((String) item[1], mActiveAccount), null);
       }
 
       text1.setText((Integer) item[0]);
@@ -455,6 +459,7 @@ public class AccountSettingsFragment extends ListFragment implements CoinbaseFra
       { R.string.account_receive_address, Constants.KEY_ACCOUNT_RECEIVE_ADDRESS, "receive_address" },
       { R.string.account_enable_merchant_tools, Constants.KEY_ACCOUNT_ENABLE_MERCHANT_TOOLS, "enable_merchant_tools" },
       { R.string.account_android_pin, Constants.KEY_ACCOUNT_PIN_VIEW_ALLOWED, "pin" },
+      { R.string.account_android_buy_as_spend, Constants.KEY_ACCOUNT_BUY_AS_SPEND, "buy_as_spend" },
   };
 
   MainActivity mParent;
@@ -567,6 +572,9 @@ public class AccountSettingsFragment extends ListFragment implements CoinbaseFra
     } else if("pin".equals(data[2])) {
 
       new PINSettingDialogFragment().show(getFragmentManager(), "pin");
+    } else if("buy_as_spend".equals(data[2])) {
+
+      new BuyAsSpendSettingsDialogFragment().show(getFragmentManager(), "buy_as_spend");
     }
   }
 

@@ -111,16 +111,33 @@ public class TransferFragment extends Fragment implements CoinbaseFragment {
 
         int messageId = type == TransferType.SEND ? R.string.transfer_success_send : R.string.transfer_success_request;
         String text = String.format(getString(messageId), (String) result[1], (String) result[3]);
+
+        Log.d("TAG", "result[1] " + result[1] + " result[3] " + result[3]);
         Toast.makeText(mParent, text, Toast.LENGTH_SHORT).show();
 
         // Clear form
         mAmountView.setText("");
         mNotesView.setText("");
         mRecipientView.setText("");
-        
-        // Sync transactions
-        mParent.refresh();
-        mParent.switchTo(MainActivity.FRAGMENT_INDEX_TRANSACTIONS);
+
+        boolean buyAsSpendEnabled = false;
+        // Only check if buy as spend is enabled when it was a send transfer
+        if (type == TransferType.SEND) {
+          final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mParent);
+          final int activeAccount = prefs.getInt(Constants.KEY_ACTIVE_ACCOUNT, -1);
+          final String buyAsSpendKey = String.format(Constants.KEY_ACCOUNT_BUY_AS_SPEND, activeAccount);
+          buyAsSpendEnabled = prefs.getString(buyAsSpendKey, null) != null;
+        }
+
+        if(buyAsSpendEnabled) {
+            BuyAsSpendDialogFragment.newInstance((String) result[1])
+                    .show(getFragmentManager(), "buy_as_spend");
+        } else {
+          // Sync transactions
+          mParent.refresh();
+          mParent.switchTo(MainActivity.FRAGMENT_INDEX_TRANSACTIONS);
+        }
+
       } else {
 
         Utils.showMessageDialog(getFragmentManager(), (String) result[1]);

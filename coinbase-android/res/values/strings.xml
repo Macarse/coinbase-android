@@ -205,10 +205,17 @@
     <string name="account_android_pin_edit">Require passcode only when transferring money</string>
     <string name="account_android_pin_edit_merchant">Require passcode only when changing settings</string>
     <string name="account_android_pin_none">Passcode not enabled</string>
+    <string name="account_android_buy_as_spend">Buy as spend</string>
+    <string name="account_android_buy_as_spend_enabled">Ask to buy after sending money</string>
+    <string name="account_android_buy_as_spend_disabled">Enable if you want to buy after sending money</string>
+    <string name="account_android_buy_as_spend_dialog_enabled">Enabled: The app will ask to buy after sending money</string>
+    <string name="account_android_buy_as_spend_dialog_disabled">Disabled: The app will not ask to buy after sending money</string>
     <string name="exchange_rate_error">Could not load exchange rate.</string>
     <string name="pin_submit">SUBMIT</string>
     <string name="account_invalid_title">Authorization failed</string>
     <string name="account_invalid">This device is no longer authorized to access your Coinbase account. Please sign in again.</string>
+    <string name="buy_as_spend_dialog_title">Buy As Spend</string>
+    <string name="buy_as_spend_dialog_message">Do you want to buy the %1$s BTC you just send at the market price?</string>
     <string name="buysell_confirm_message_buy_varies">Due to higher than normal buy volumes, we are unable to provide exact price quotes right now.<![CDATA[<br><br>]]>Instead of pausing buys entirely, we decided to give people the option to purchase bitcoin at the market price in a few days. Once your USD funds arrive, we will exchange them to bitcoin at the market price.<![CDATA[<br><br><a href="https://coinbase.com/buys">More information</a>]]></string>
     <string name="addresses_error">There was an error loading receive addresses.</string>
     <string name="addresses_help">Below is a list of bitcoin addresses associated with your account. New bitcoin addresses are generated for each payment on Coinbase, so you shouldn\'t need to remember or reuse them. Bitcoin addresses remain connected to your account forever so it is safe to send money to them indefinitely.</string>
